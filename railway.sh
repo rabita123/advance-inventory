@@ -1,20 +1,11 @@
 #!/bin/bash
 
-# Railway deployment script for Laravel
+# Simple Railway startup script for Laravel
 
-# Install dependencies
-composer install --no-dev --optimize-autoloader
+echo "Starting Laravel application..."
 
-# Generate application key if not set
-php artisan key:generate --force
+# Install dependencies (Railway handles this automatically)
+# composer install --no-dev --optimize-autoloader
 
-# Clear and cache config
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-
-# Run migrations
-php artisan migrate --force
-
-# Start the web server
-php artisan serve --host=0.0.0.0 --port=$PORT
+# Start the application
+exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000}

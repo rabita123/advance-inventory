@@ -19,7 +19,11 @@ use App\Http\Controllers\Backend\ServiceBillController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json([
+        'message' => 'Laravel Inventory System is running!',
+        'timestamp' => now(),
+        'status' => 'healthy'
+    ]);
 });
 
 // Health check route for Railway
